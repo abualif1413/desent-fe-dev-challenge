@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Ground plane radial drop shadow -->
+    <radialGradient id="chair-ground-shadow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#020617" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#020617" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Dark matte frame gradient -->
+    <linearGradient id="frame-dark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="40%" stop-color="#334155" />
+      <stop offset="70%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Gas lift cylinder metallic chrome / dark steel gradient -->
+    <linearGradient id="gas-lift-shaft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="30%" stop-color="#64748b" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="70%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Mesh Backrest dark translucent gradient -->
+    <linearGradient id="mesh-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#0f172a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="1" />
+    </linearGradient>
+
+    <!-- Seat cushion curvature gradient -->
+    <linearGradient id="seat-cushion" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="35%" stop-color="#1e293b" />
+      <stop offset="85%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Armrest pad gradient -->
+    <linearGradient id="armpad-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="60%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Headrest cushion gradient -->
+    <linearGradient id="headrest-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Lumbar support accent glow (matching the desk cyan accent) -->
+    <linearGradient id="cyan-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Star base caster wheel gradient -->
+    <linearGradient id="caster-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Mesh micro-pattern for ergonomic backrest -->
+    <pattern id="mesh-pattern" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 0 4 L 4 0 L 8 4 L 4 8 Z" fill="none" stroke="#475569" stroke-width="0.75" stroke-opacity="0.35" />
+      <circle cx="4" cy="4" r="0.75" fill="#38bdf8" fill-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  <!-- 1. Ground Plane Contact Shadows -->
+  <ellipse cx="300" cy="545" rx="190" ry="20" fill="url(#chair-ground-shadow)" />
+  <ellipse cx="300" cy="542" rx="70" ry="9" fill="#020617" fill-opacity="0.4" />
+
+  <!-- Caster contact spots -->
+  <ellipse cx="140" cy="535" rx="14" ry="4" fill="#020617" fill-opacity="0.5" />
+  <ellipse cx="460" cy="535" rx="14" ry="4" fill="#020617" fill-opacity="0.5" />
+  <ellipse cx="230" cy="542" rx="12" ry="4" fill="#020617" fill-opacity="0.45" />
+  <ellipse cx="370" cy="542" rx="12" ry="4" fill="#020617" fill-opacity="0.45" />
+
+  <!-- 2. 5-Star Base & Caster Wheels (Front Elevation) -->
+  <g id="star-base">
+    <!-- Star Base Legs (5-star seen from front) -->
+    <!-- Center Hub -->
+    <rect x="286" y="475" width="28" height="24" rx="4" fill="url(#frame-dark)" stroke="#020617" stroke-width="1" />
+    
+    <!-- Left outer leg -->
+    <path d="M 288 488 L 146 524 C 142 525, 138 528, 138 532 L 138 534 L 152 534 L 288 497 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="0.75" />
+    <line x1="288" y1="489" x2="142" y2="526" stroke="#64748b" stroke-width="1.2" stroke-opacity="0.4" />
+
+    <!-- Right outer leg -->
+    <path d="M 312 488 L 454 524 C 458 525, 462 528, 462 532 L 462 534 L 448 534 L 312 497 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="0.75" />
+    <line x1="312" y1="489" x2="458" y2="526" stroke="#64748b" stroke-width="1.2" stroke-opacity="0.4" />
+
+    <!-- Front Left leg -->
+    <path d="M 292 494 L 234 532 C 231 534, 228 536, 226 539 L 240 541 L 296 500 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="0.75" />
+
+    <!-- Front Right leg -->
+    <path d="M 308 494 L 366 532 C 369 534, 372 536, 374 539 L 360 541 L 304 500 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="0.75" />
+
+    <!-- Casters (Dual-wheel architecture casters) -->
+    <!-- Far Left Caster -->
+    <g id="caster-left">
+      <rect x="134" y="528" width="12" height="9" rx="2" fill="#090d16" stroke="#020617" stroke-width="0.5" />
+      <circle cx="140" cy="534" r="5" fill="url(#caster-metal)" stroke="#020617" stroke-width="0.75" />
+      <circle cx="140" cy="534" r="2" fill="#64748b" />
+    </g>
+
+    <!-- Far Right Caster -->
+    <g id="caster-right">
+      <rect x="454" y="528" width="12" height="9" rx="2" fill="#090d16" stroke="#020617" stroke-width="0.5" />
+      <circle cx="460" cy="534" r="5" fill="url(#caster-metal)" stroke="#020617" stroke-width="0.75" />
+      <circle cx="460" cy="534" r="2" fill="#64748b" />
+    </g>
+
+    <!-- Front Mid-Left Caster -->
+    <g id="caster-mid-left">
+      <circle cx="232" cy="540" r="5" fill="url(#caster-metal)" stroke="#020617" stroke-width="0.75" />
+      <circle cx="232" cy="540" r="2" fill="#64748b" />
+    </g>
+
+    <!-- Front Mid-Right Caster -->
+    <g id="caster-mid-right">
+      <circle cx="368" cy="540" r="5" fill="url(#caster-metal)" stroke="#020617" stroke-width="0.75" />
+      <circle cx="368" cy="540" r="2" fill="#64748b" />
+    </g>
+  </g>
+
+  <!-- 3. Pneumatic Gas Lift Cylinder & Mechanism Housing -->
+  <g id="gas-lift-column">
+    <!-- Outer telescoping collar -->
+    <rect x="290" y="445" width="20" height="35" rx="2" fill="#090d16" stroke="#020617" stroke-width="0.75" />
+    <!-- Polished steel inner shaft -->
+    <rect x="293" y="415" width="14" height="35" fill="url(#gas-lift-shaft)" stroke="#0f172a" stroke-width="0.5" />
+    <!-- Under-seat synchro-tilt mechanism box -->
+    <path d="M 265 398 L 335 398 L 328 418 L 272 418 Z" fill="#090d16" stroke="#020617" stroke-width="1" />
+    <!-- Tilt tension adjustment knob (center front/bottom) -->
+    <rect x="292" y="416" width="16" height="8" rx="2" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+    <!-- Recline lock lever left -->
+    <rect x="250" y="405" width="18" height="4" rx="2" fill="#334155" />
+    <!-- Height adjustment paddle right -->
+    <rect x="332" y="405" width="18" height="4" rx="2" fill="#334155" />
+  </g>
+
+  <!-- 4. Armrest Supports (Behind seat layer for realistic 3D overlap) -->
+  <g id="armrest-supports">
+    <!-- Left structural upright -->
+    <path d="M 238 396 L 202 388 C 196 386, 192 380, 192 374 L 192 285 L 204 285 L 204 368 L 238 384 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="1" />
+    <!-- Left height adjustment button -->
+    <rect x="189" y="300" width="4" height="12" rx="1.5" fill="#38bdf8" />
+
+    <!-- Right structural upright -->
+    <path d="M 362 396 L 398 388 C 404 386, 408 380, 408 374 L 408 285 L 396 285 L 396 368 L 362 384 Z" fill="url(#frame-dark)" stroke="#020617" stroke-width="1" />
+    <!-- Right height adjustment button -->
+    <rect x="407" y="300" width="4" height="12" rx="1.5" fill="#38bdf8" />
+  </g>
+
+  <!-- 5. Ergonomic Backrest Assembly (Spine, Lumbar & Translucent Mesh) -->
+  <g id="backrest">
+    <!-- Central Ergonomic Spine Spine / Y-Spine (Visible behind mesh) -->
+    <path d="M 294 395 L 306 395 L 308 220 L 330 155 L 318 150 L 300 195 L 282 150 L 270 155 L 292 220 Z" fill="#090d16" stroke="#020617" stroke-width="1" />
+
+    <!-- Lumbar Support Mechanism (Horizontal Wings + Accent Strip) -->
+    <g id="lumbar-support">
+      <!-- Lumbar structural cradle -->
+      <path d="M 230 295 C 265 304, 335 304, 370 295 C 374 294, 376 298, 374 302 C 342 318, 258 318, 226 302 C 224 298, 226 294, 230 295 Z"
+            fill="#090d16" stroke="#1e293b" stroke-width="1" />
+      <!-- Lumbar pad front cushion -->
+      <path d="M 238 297 C 270 304, 330 304, 362 297 C 365 296, 367 299, 365 302 C 338 314, 262 314, 235 302 C 233 299, 235 296, 238 297 Z"
+            fill="#1e293b" />
+      <!-- Lumbar Cyan Precision Glow Strip (Cohesive with desk cyan line) -->
+      <path d="M 252 301 C 280 306, 320 306, 348 301" stroke="url(#cyan-accent)" stroke-width="2.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Outer Structural Perimeter Frame of the Backrest -->
+    <path d="M 240 145 C 270 135, 330 135, 360 145 C 385 154, 395 190, 390 240 C 385 285, 388 325, 376 365 C 372 376, 362 380, 350 380 C 320 382, 280 382, 250 380 C 238 380, 228 376, 224 365 C 212 325, 215 285, 210 240 C 205 190, 215 154, 240 145 Z"
+          fill="url(#mesh-gradient)"
+          stroke="#334155"
+          stroke-width="3" />
+
+    <!-- High-tech Breathable Mesh Pattern Overlay -->
+    <path d="M 240 145 C 270 135, 330 135, 360 145 C 385 154, 395 190, 390 240 C 385 285, 388 325, 376 365 C 372 376, 362 380, 350 380 C 320 382, 280 382, 250 380 C 238 380, 228 376, 224 365 C 212 325, 215 285, 210 240 C 205 190, 215 154, 240 145 Z"
+          fill="url(#mesh-pattern)" />
+
+    <!-- Backrest Beveled Edge Crisp Specular Rim -->
+    <path d="M 244 148 C 272 139, 328 139, 356 148 C 378 156, 387 190, 382 240 C 378 282, 380 322, 369 360"
+          stroke="#64748b" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+
+  <!-- 6. Waterfall Contoured Seat Pan -->
+  <g id="seat-pan">
+    <!-- Under-seat frame rim -->
+    <path d="M 195 382 C 195 374, 215 370, 300 370 C 385 370, 405 374, 405 382 L 400 405 C 400 412, 380 416, 300 416 C 220 416, 200 412, 200 405 Z"
+          fill="#090d16" stroke="#020617" stroke-width="1" />
+
+    <!-- Main Ergonomic Contoured Cushion (Front elevation perspective with forward waterfall roll) -->
+    <!-- Lower rim / front edge drop -->
+    <path d="M 194 382 C 196 395, 218 410, 300 410 C 382 410, 404 395, 406 382 C 408 396, 396 414, 300 414 C 204 414, 192 396, 194 382 Z"
+          fill="#020617" />
+
+    <!-- Top Cushion Surface with saddle contour -->
+    <path d="M 198 372 C 212 365, 252 362, 300 362 C 348 362, 388 365, 402 372 C 414 378, 412 388, 398 396 C 374 408, 335 412, 300 412 C 265 412, 226 408, 202 396 C 188 388, 186 378, 198 372 Z"
+          fill="url(#seat-cushion)"
+          stroke="#334155"
+          stroke-width="1.5" />
+
+    <!-- Cushion Ischial Saddle Contours (subtle ergonomic stitching / relief indentations) -->
+    <!-- Left thigh relief curve -->
+    <path d="M 235 375 C 242 388, 246 398, 248 404" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+    <path d="M 236 375 C 243 388, 247 398, 249 404" stroke="#64748b" stroke-opacity="0.3" stroke-width="1" stroke-linecap="round" />
+
+    <!-- Right thigh relief curve -->
+    <path d="M 365 375 C 358 388, 354 398, 352 404" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+    <path d="M 364 375 C 357 388, 353 398, 351 404" stroke="#64748b" stroke-opacity="0.3" stroke-width="1" stroke-linecap="round" />
+
+    <!-- Front waterfall edge highlight rim -->
+    <path d="M 215 397 C 248 407, 352 407, 385 397" stroke="#64748b" stroke-opacity="0.55" stroke-width="1.75" stroke-linecap="round" />
+  </g>
+
+  <!-- 7. 4D Armrest Cushion Pads (Foreground layer) -->
+  <g id="armrest-pads">
+    <!-- Left Armrest Pad -->
+    <g id="armpad-left">
+      <ellipse cx="198" cy="282" rx="26" ry="9" fill="url(#armpad-gradient)" stroke="#334155" stroke-width="1.25" />
+      <!-- Bevel Highlight -->
+      <ellipse cx="198" cy="281" rx="22" ry="6" fill="none" stroke="#64748b" stroke-opacity="0.4" stroke-width="1" />
+      <!-- Soft tactile indentation -->
+      <ellipse cx="198" cy="282" rx="14" ry="3.5" fill="#1e293b" />
+    </g>
+
+    <!-- Right Armrest Pad -->
+    <g id="armpad-right">
+      <ellipse cx="402" cy="282" rx="26" ry="9" fill="url(#armpad-gradient)" stroke="#334155" stroke-width="1.25" />
+      <!-- Bevel Highlight -->
+      <ellipse cx="402" cy="281" rx="22" ry="6" fill="none" stroke="#64748b" stroke-opacity="0.4" stroke-width="1" />
+      <!-- Soft tactile indentation -->
+      <ellipse cx="402" cy="282" rx="14" ry="3.5" fill="#1e293b" />
+    </g>
+  </g>
+
+  <!-- 8. Articulated Ergonomic Headrest Assembly -->
+  <g id="headrest">
+    <!-- Dual-pivot Mounting Bracket Extension from Backrest -->
+    <path d="M 292 142 L 292 98 L 308 98 L 308 142 Z" fill="#090d16" stroke="#020617" stroke-width="0.75" />
+    <!-- Articulation Pivot Joints with Specular Highlights -->
+    <circle cx="295" cy="102" r="4.5" fill="#334155" stroke="#020617" stroke-width="0.75" />
+    <circle cx="295" cy="102" r="2" fill="#64748b" />
+    <circle cx="305" cy="102" r="4.5" fill="#334155" stroke="#020617" stroke-width="0.75" />
+    <circle cx="305" cy="102" r="2" fill="#64748b" />
+
+    <!-- Headrest Cushion (Concave Cervical Spine Contour) -->
+    <path d="M 245 84 C 265 92, 335 92, 355 84 C 365 80, 368 66, 358 60 C 338 48, 262 48, 242 60 C 232 66, 235 80, 245 84 Z"
+          fill="url(#headrest-gradient)"
+          stroke="#334155"
+          stroke-width="1.5" />
+
+    <!-- Headrest Inner Concave Surface / Ergonomic Neck Cradle -->
+    <path d="M 252 80 C 272 86, 328 86, 348 80 C 354 77, 356 67, 350 63 C 334 54, 266 54, 250 63 C 244 67, 246 77, 252 80 Z"
+          fill="#0f172a" />
+
+    <!-- Headrest Top Specular Highlight Arc -->
+    <path d="M 254 62 C 274 53, 326 53, 346 62" stroke="#64748b" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" />
+    <!-- Headrest Lower Lip Shadow -->
+    <path d="M 248 83 C 270 90, 330 90, 352 83" stroke="#020617" stroke-width="1.5" stroke-linecap="round" />
+
+    <!-- Cyan Micro-Accent Dot on pivot center -->
+    <circle cx="300" cy="102" r="1.5" fill="#38bdf8" />
+  </g>
+</svg>

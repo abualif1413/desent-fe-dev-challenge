@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 550" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Soft radial ground plane shadow -->
+    <radialGradient id="purifier-ground-shadow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.25" />
+      <stop offset="45%" stop-color="#0f172a" stop-opacity="0.09" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Cylindrical Main Body Gradient (Brushed light anodized aluminum / architectural matte alloy) -->
+    <linearGradient id="body-cylinder-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="18%" stop-color="#cbd5e1" />
+      <stop offset="42%" stop-color="#f8fafc" />
+      <stop offset="70%" stop-color="#e2e8f0" />
+      <stop offset="88%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <!-- Top Cap Beveled Rim Gradient -->
+    <linearGradient id="top-bezel-rim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="30%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Recessed Top Grille Chasm / Vents -->
+    <radialGradient id="top-grille-cavity" cx="50%" cy="50%" r="50%" fx="50%" fy="40%">
+      <stop offset="0%" stop-color="#0b1329" />
+      <stop offset="75%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </radialGradient>
+
+    <!-- Base Chamfer Lip Gradient -->
+    <linearGradient id="base-chamfer-lip" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Precision Cyan LED Accent Glow (Matching monitor, desk, chair, lamp series) -->
+    <linearGradient id="cyan-precision-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Micro Mist / Aromatic Plume Ethereal Gradient -->
+    <linearGradient id="mist-plume" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45" />
+      <stop offset="25%" stop-color="#7dd3fc" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#e0f2fe" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Precision Intake Micro-Perforation Pattern -->
+    <pattern id="air-intake-mesh" width="6" height="5" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="2.5" r="0.9" fill="#475569" fill-opacity="0.75" />
+      <circle cx="6" cy="5" r="0.9" fill="#475569" fill-opacity="0.75" />
+      <circle cx="0" cy="5" r="0.9" fill="#475569" fill-opacity="0.75" />
+    </pattern>
+
+    <!-- Vertical Radial Slits Pattern for Top Venting Outlet -->
+    <radialGradient id="core-ion-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#0284c7" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Ambient Ultrasonic Vapor Plume / Fresh Air Stream (Upward diffused flow) -->
+  <g id="aroma-vapor-mist">
+    <!-- Outer ambient vapor glow -->
+    <path d="M 235 125 C 210 90, 205 60, 230 20 C 240 5, 260 5, 270 20 C 295 60, 290 90, 265 125 Z"
+          fill="url(#mist-plume)" />
+    <!-- Inner micro fine dispersion cone -->
+    <path d="M 242 125 C 230 95, 232 70, 246 38 C 248 32, 252 32, 254 38 C 268 70, 270 95, 258 125 Z"
+          fill="url(#mist-plume)" opacity="0.8" />
+    <!-- Fine particle floating droplets -->
+    <circle cx="248" cy="45" r="1.5" fill="#e0f2fe" opacity="0.7" />
+    <circle cx="255" cy="30" r="1.2" fill="#ffffff" opacity="0.6" />
+    <circle cx="242" cy="22" r="1.8" fill="#bae6fd" opacity="0.5" />
+    <circle cx="258" cy="12" r="1.2" fill="#e0f2fe" opacity="0.4" />
+  </g>
+
+  <!-- 2. Ground Plane Contact Shadow -->
+  <ellipse cx="250" cy="495" rx="125" ry="14" fill="url(#purifier-ground-shadow)" />
+  <ellipse cx="250" cy="493" rx="80" ry="7" fill="#0f172a" fill-opacity="0.18" />
+  <ellipse cx="250" cy="492" rx="55" ry="4" fill="#0f172a" fill-opacity="0.25" />
+
+  <!-- 3. Base Assembly & Rubberized Leveling Feet -->
+  <g id="device-base">
+    <!-- Non-slip recessed feet pads -->
+    <rect x="186" y="488" width="16" height="4" rx="2" fill="#334155" />
+    <rect x="298" y="488" width="16" height="4" rx="2" fill="#334155" />
+
+    <!-- Bottom Chamfer Base Collar -->
+    <path d="M 180 472 L 320 472 C 322 472, 324 474, 323 477 L 319 488 C 318 490, 315 491, 312 491 L 188 491 C 185 491, 182 490, 181 488 L 177 477 C 176 474, 178 472, 180 472 Z"
+          fill="url(#base-chamfer-lip)" stroke="#64748b" stroke-width="0.75" />
+
+    <!-- Underside Shadow Gap Line -->
+    <ellipse cx="250" cy="472" rx="72" ry="5.5" fill="#334155" />
+  </g>
+
+  <!-- 4. Cylindrical Architectural Main Housing -->
+  <g id="main-chassis">
+    <!-- Outer Aluminum Unibody Shell -->
+    <path d="M 175 140
+             C 175 130, 208 122, 250 122
+             C 292 122, 325 130, 325 140
+             L 322 468
+             C 322 477, 290 484, 250 484
+             C 210 484, 178 477, 178 468 Z"
+          fill="url(#body-cylinder-gradient)"
+          stroke="#94a3b8"
+          stroke-width="1.25" />
+
+    <!-- Specular Highlight Rod on curved cylinder apex -->
+    <line x1="228" y1="135" x2="228" y2="472" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.85" />
+    <!-- Secondary softer specular reflection -->
+    <line x1="262" y1="135" x2="262" y2="472" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.4" />
+
+    <!-- 360-degree Lower Precision Intake Perforation Grille (Micro-mesh filter chamber) -->
+    <g id="intake-grille-section">
+      <!-- Intake housing boundary band -->
+      <path d="M 177 305
+               L 323 305
+               L 321 448
+               C 321 456, 289 462, 250 462
+               C 211 462, 179 456, 179 448
+               L 177 305 Z"
+            fill="url(#air-intake-mesh)" />
+
+      <!-- Intake top division seam / recessed channel -->
+      <path d="M 177 305 C 195 311, 230 314, 250 314 C 270 314, 305 311, 323 305"
+            stroke="#64748b" stroke-width="1" fill="none" />
+      <path d="M 177 306 C 195 312, 230 315, 250 315 C 270 315, 305 312, 323 306"
+            stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.8" fill="none" />
+
+      <!-- Intake bottom division seam -->
+      <path d="M 179 450 C 196 456, 230 460, 250 460 C 270 460, 304 456, 321 450"
+            stroke="#64748b" stroke-width="1" fill="none" />
+
+      <!-- HEPA + Active Carbon Inner Core Silhouette (subtle depth behind mesh) -->
+      <ellipse cx="250" cy="385" rx="60" ry="40" fill="#0f172a" fill-opacity="0.12" />
+    </g>
+
+    <!-- Technical Studio Calibration Indices & Scent / Fan Level Notches -->
+    <g id="technical-indicia" stroke="#64748b" stroke-width="0.75">
+      <line x1="184" y1="215" x2="188" y2="215" />
+      <line x1="184" y1="225" x2="187" y2="225" />
+      <line x1="184" y1="235" x2="188" y2="235" />
+      <line x1="184" y1="245" x2="190" y2="245" stroke="#0284c7" stroke-width="1.25" />
+      <line x1="184" y1="255" x2="188" y2="255" />
+      <line x1="184" y1="265" x2="187" y2="265" />
+      <line x1="184" y1="275" x2="188" y2="275" />
+    </g>
+
+    <!-- Signature Precision Cyan LED Status Ring (Air Quality Index / AQI Indicator & Scent Mode) -->
+    <!-- Cohesive with monitor, desk, chair, and lamp cyan accents -->
+    <g id="air-quality-led-ribbon">
+      <path d="M 176 284
+               C 195 292, 230 295, 250 295
+               C 270 295, 305 292, 324 284"
+            stroke="url(#cyan-precision-glow)"
+            stroke-width="3"
+            stroke-linecap="round"
+            fill="none" />
+      <!-- High-intensity cyan LED core beam -->
+      <path d="M 195 290
+               C 215 294, 238 295, 250 295
+               C 262 295, 285 294, 305 290"
+            stroke="#38bdf8"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            fill="none" />
+      <!-- Micro specular ambient reflection below LED ring -->
+      <path d="M 185 294 C 210 300, 240 301, 250 301 C 260 301, 290 300, 315 294"
+            stroke="#0284c7" stroke-width="0.8" stroke-opacity="0.4" fill="none" />
+    </g>
+
+    <!-- Central Minimalist Studio Display / Touch Surface -->
+    <g id="center-touch-display">
+      <!-- Dark Obsidian Glass Pill Display Window -->
+      <rect x="220" y="172" width="60" height="74" rx="14" fill="#0b1329" stroke="#334155" stroke-width="1" />
+      <rect x="221" y="173" width="58" height="72" rx="13" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.3" />
+
+      <!-- Air Purity / AQI Metric (008 μg/m3 - Clean Studio Air) -->
+      <!-- AQI Readout Vector -->
+      <text x="250" y="202" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">08</text>
+      <text x="250" y="213" font-family="system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="600" fill="#94a3b8" text-anchor="middle" letter-spacing="0.8">AQI • PM2.5</text>
+
+      <!-- Aroma Freshener Mode Icon (Botanical droplet / wave) -->
+      <circle cx="238" cy="230" r="4.5" fill="#1e293b" />
+      <path d="M 238 227 C 238 227, 241 230, 241 231.5 C 241 233, 239.5 234, 238 234 C 236.5 234, 235 233, 235 231.5 C 235 230, 238 227, 238 227 Z"
+            fill="#38bdf8" />
+
+      <!-- Fan Speed Dots Indicator -->
+      <circle cx="254" cy="230" r="1.5" fill="#38bdf8" />
+      <circle cx="259" cy="230" r="1.5" fill="#38bdf8" />
+      <circle cx="264" cy="230" r="1.5" fill="#475569" />
+    </g>
+  </g>
+
+  <!-- 5. Top Architectural Diffuser Cap & Radial Louver Grille -->
+  <g id="top-diffuser-assembly">
+    <!-- Outer Top Chamfer Bevel Ring -->
+    <ellipse cx="250" cy="138" rx="75" ry="17" fill="url(#top-bezel-rim)" stroke="#64748b" stroke-width="0.8" />
+    <ellipse cx="250" cy="137" rx="73" ry="15" fill="none" stroke="#ffffff" stroke-width="1.25" stroke-opacity="0.9" />
+
+    <!-- Recessed Venting Cavity Interior -->
+    <ellipse cx="250" cy="136" rx="63" ry="13.5" fill="url(#top-grille-cavity)" stroke="#1e293b" stroke-width="1" />
+
+    <!-- Concentric Radial Louver Rings (Aerodynamic air-vortex vanes) -->
+    <!-- Outer Louver Ring -->
+    <ellipse cx="250" cy="136" rx="54" ry="11" fill="none" stroke="#334155" stroke-width="1.5" />
+    <ellipse cx="250" cy="135.5" rx="53.5" ry="10.5" fill="none" stroke="#64748b" stroke-width="0.5" />
+
+    <!-- Mid Louver Ring with cyan ion glow highlight -->
+    <ellipse cx="250" cy="136" rx="40" ry="8" fill="none" stroke="#1e293b" stroke-width="1.5" />
+    <ellipse cx="250" cy="135.5" rx="39.5" ry="7.8" fill="none" stroke="#0284c7" stroke-width="0.8" stroke-opacity="0.8" />
+
+    <!-- Inner Louver Ring -->
+    <ellipse cx="250" cy="136" rx="26" ry="5.2" fill="none" stroke="#334155" stroke-width="1.25" />
+
+    <!-- Radial Directional Air Deflector Fins (Front perspective spokes) -->
+    <g id="grille-spokes" stroke="#475569" stroke-width="1.2" stroke-linecap="round">
+      <line x1="198" y1="136" x2="224" y2="136" />
+      <line x1="276" y1="136" x2="302" y2="136" />
+      <line x1="215" y1="129" x2="232" y2="132" />
+      <line x1="285" y1="143" x2="268" y2="140" />
+      <line x1="285" y1="129" x2="268" y2="132" />
+      <line x1="215" y1="143" x2="232" y2="140" />
+      <line x1="250" y1="123" x2="250" y2="131" />
+      <line x1="250" y1="141" x2="250" y2="149" />
+    </g>
+
+    <!-- Center Ultrasonic Aroma Dispersion Nozzle & Halo Core -->
+    <ellipse cx="250" cy="136" rx="14" ry="3.5" fill="#0f172a" stroke="#475569" stroke-width="0.8" />
+    <ellipse cx="250" cy="136" rx="10" ry="2.6" fill="url(#core-ion-glow)" />
+
+    <!-- Micro Ultrasonic Ceramic Atomizer Aperture -->
+    <ellipse cx="250" cy="136" rx="3.5" ry="1.2" fill="#38bdf8" />
+    <circle cx="250" cy="136" r="5" fill="#38bdf8" fill-opacity="0.3" />
+
+    <!-- Capacitive Power / Fragrance Boost Touch Sensor Arc on Bezel Rim -->
+    <path d="M 240 123 C 246 122.5, 254 122.5, 260 123" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
+    <circle cx="250" cy="123" r="1.2" fill="#0284c7" />
+  </g>
+</svg>

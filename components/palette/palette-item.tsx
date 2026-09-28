@@ -27,7 +27,7 @@ const PaletteItem: FC<PaletteItemProps> = ({
           alt={brandName}
           width={80}
           height={80}
-          className="rounded bg-sky-50 border border-sky-100 flex items-center justify-center text-primary flex-shrink-0"
+          className="aspect-square"
         />
         <div className="flex flex-col min-w-0">
           <span className="font-headline-sm text-[13px] text-slate-800 font-medium truncate leading-tight group-hover:text-primary transition-colors">

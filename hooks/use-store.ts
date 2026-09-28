@@ -13,8 +13,10 @@ import type {
 } from "@/utils/types";
 
 const useStore = create<CanvasElementStates>((set) => ({
+  search: "",
   items: [],
   selectedIndex: [],
+  setSearch: (search: string) => set((state) => ({...state, search})),
   setSelectedIndex: (selectedIndex: number[]) =>
     set((state) => ({ ...state, selectedIndex })),
   addItem: (paletteItem: PaletteItemProps) => {

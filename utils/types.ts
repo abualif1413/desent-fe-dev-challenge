@@ -33,8 +33,10 @@ export interface CanvasElementItem {
 }
 
 export interface CanvasElementStates {
+  search: string;
   items: CanvasElementItem[];
   selectedIndex: number[];
+  setSearch: (search: string) => void;
   setSelectedIndex: (selectedIndex: number[]) => void;
   addItem: (paletteItem: PaletteItemProps) => void;
   dragItem: ({ x, y, index }: { x: number; y: number; index: number }) => void;

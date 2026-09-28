@@ -10,8 +10,6 @@ const CanvasCheckout = () => {
   }, 0);
   const groupedItems = groupBy(canvasItems, "paletteItem.category");
 
-  console.log(groupedItems);
-
   return (
     <div className="absolute top-5 right-5 z-20 w-72 bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200/90 shadow-lg p-3 transition-all select-none">
       <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2.5">

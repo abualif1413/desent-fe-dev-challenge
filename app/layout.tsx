@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 
 import "./globals.css";
+import classNames from "classnames";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={classNames("h-full antialiased", hankenGrotesk.variable, jetBrainsMono.variable)}
     >
       <head>
         <link

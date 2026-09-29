@@ -62,7 +62,6 @@ const CanvasItem: FC<CanvasItemProps> = ({
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
 
-          // Reset scale and bake it into width/height instead
           node.scaleX(1);
           node.scaleY(1);
 

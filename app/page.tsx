@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import useMeasure from "react-use-measure";
 
 import CanvasFloatingBar from "@/components/canvas/canvas-floating-bar";
@@ -10,7 +11,6 @@ import CanvasCheckout from "@/components/canvas/canvas-checkout";
 import PaletteSearch from "@/components/palette/palette-search";
 import useStore from "@/hooks/use-store";
 import PaletteEmptyResult from "@/components/palette/palette-empty-result";
-import { useEffect } from "react";
 
 export default function Home() {
   const [canvasContainerRef, canvasBounds] = useMeasure();

@@ -25,8 +25,6 @@ const Pills: FC<PillsProps> = ({
           "opacity-30": isDisabled
         },
       )}
-      id="dimToggle"
-      title="Show Metric Dimensions"
       type="button"
       onClick={onClick}
     >

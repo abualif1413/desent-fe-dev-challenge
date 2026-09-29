@@ -7,7 +7,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: "Height-adjustable desk with a white top and steel legs",
     materialIcon: "desk",
     canvasImageUrl: "/palettes/desk-1.svg",
-    price: 28
+    price: 28,
   },
   {
     brandName: "Nightfall Lift Pro",
@@ -15,7 +15,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: "Dark height-adjustable desk with ambient underglow",
     materialIcon: "table_bar",
     canvasImageUrl: "/palettes/desk-2.svg",
-    price: 34
+    price: 34,
   },
   {
     brandName: "ErgoCore Black",
@@ -23,7 +23,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: "Mesh ergonomic chair with headrest and lumbar support",
     materialIcon: "chair",
     canvasImageUrl: "/palettes/chair-1.svg",
-    price: 18
+    price: 18,
   },
   {
     brandName: "ErgoCore Air White",
@@ -39,7 +39,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: `27" UHD flat monitor with a sharp, wide-angle display`,
     materialIcon: "assistant_on_hub",
     canvasImageUrl: "/palettes/monitor-1.svg",
-    price: 30
+    price: 30,
   },
   {
     brandName: "CurveView 4K 34",
@@ -47,7 +47,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: `34" UHD curved ultrawide for multitasking`,
     materialIcon: "monitor",
     canvasImageUrl: "/palettes/monitor-2.svg",
-    price: 42
+    price: 42,
   },
   {
     brandName: "LumaBar Desk Light",
@@ -55,7 +55,7 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: "Slim LED bar lamp with adjustable brightness and warmth",
     materialIcon: "light",
     canvasImageUrl: "/palettes/desk-light-1.svg",
-    price: 5
+    price: 5,
   },
   {
     brandName: "PureAir Mini",
@@ -63,11 +63,12 @@ export const PALETTE_ITEMS: PaletteItemProps[] = [
     description: "Compact air purifier with a display and fresh-air glow",
     materialIcon: "air_freshener",
     canvasImageUrl: "/palettes/air-freshner-1.svg",
-    price: 8
+    price: 8,
   },
 ];
 
-export const DEFAULT_X = 50
-export const DEFAULT_Y = 50
-export const DEFAULT_WIDTH = 200
-export const DEFAULT_HEIGHT = 200
+export const DEFAULT_X = 50;
+export const DEFAULT_Y = 50;
+export const DEFAULT_WIDTH = 200;
+export const DEFAULT_HEIGHT = 200;
+export const LOCAL_STORAGE_DATA_KEY = "workspace-designer-data";

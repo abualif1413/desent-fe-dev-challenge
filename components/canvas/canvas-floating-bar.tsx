@@ -1,58 +1,79 @@
+import classNames from "classnames";
 import { FC } from "react";
 
 import useStore from "@/hooks/use-store";
+
+interface PillsProps {
+  caption: string;
+  materialIcon: string;
+  onClick: () => void;
+  isDisabled?: boolean;
+}
+
+const Pills: FC<PillsProps> = ({
+  caption,
+  materialIcon,
+  onClick,
+  isDisabled,
+}) => {
+  return (
+    <button
+      className={classNames(
+        "px-2.5 py-1 rounded-full text-slate-600 font-label-sm text-label-sm flex items-center gap-1 transition-all",
+        {
+          "hover:text-slate-900 hover:bg-slate-100": !isDisabled,
+          "opacity-30": isDisabled
+        },
+      )}
+      id="dimToggle"
+      title="Show Metric Dimensions"
+      type="button"
+      onClick={onClick}
+    >
+      <span className="material-symbols-outlined text-[15px]">
+        {materialIcon}
+      </span>
+      <span className="">{caption}</span>
+    </button>
+  );
+};
 
 const CanvasFloatingBar: FC = () => {
   const sendToBack = useStore((state) => state.sendToBack);
   const bringToFront = useStore((state) => state.bringToFront);
   const removeItem = useStore((state) => state.removeItem);
   const selectedItems = useStore((state) => state.selectedItems);
-
-  if (selectedItems.length === 0) {
-    return null;
-  }
+  const hasAnyChanges = useStore((state) => state.hasAnyChanges);
+  const saveChanges = useStore((state) => state.saveChanges);
 
   return (
     <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-xl px-2 py-1.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1">
-      <button
-        className="px-2.5 py-1 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-label-sm text-label-sm flex items-center gap-1 transition-all"
-        id="dimToggle"
-        title="Show Metric Dimensions"
-        type="button"
+      <Pills
+        caption="Bring to Front"
+        materialIcon="flip_to_front"
         onClick={bringToFront}
-      >
-        <span className="material-symbols-outlined text-[15px]">
-          flip_to_front
-        </span>
-        <span className="">Bring to Front</span>
-      </button>
-      <button
-        className="px-2.5 py-1 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-label-sm text-label-sm flex items-center gap-1 transition-all"
-        id="dimToggle"
-        title="Show Metric Dimensions"
-        type="button"
+        isDisabled={!selectedItems.length}
+      />
+      <Pills
+        caption="Send to Back"
+        materialIcon="flip_to_back"
         onClick={sendToBack}
-      >
-        <span className="material-symbols-outlined text-[15px]">
-          flip_to_back
-        </span>
-        <span className="">Send to Back</span>
-      </button>
+        isDisabled={!selectedItems.length}
+      />
       <div className="w-[1px] h-5 bg-slate-200 mx-1"></div>
-      <div className="flex items-center gap-0.5">
-        <button
-          className="px-2.5 py-1 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-label-sm text-label-sm flex items-center gap-1 transition-all"
-          id="dimToggle"
-          title="Show Metric Dimensions"
-          type="button"
-          onClick={removeItem}
-        >
-          <span className="material-symbols-outlined text-[15px]">
-            backspace
-          </span>
-          <span className="">Remove Item</span>
-        </button>
-      </div>
+      <Pills
+        caption="Remove Item"
+        materialIcon="backspace"
+        onClick={removeItem}
+        isDisabled={!selectedItems.length}
+      />
+      <div className="w-[1px] h-5 bg-slate-200 mx-1"></div>
+      <Pills
+        caption="Save Changes"
+        materialIcon="save"
+        onClick={saveChanges}
+        isDisabled={!hasAnyChanges}
+      />
     </div>
   );
 };

@@ -34,11 +34,13 @@ export interface CanvasElementItem {
 }
 
 export interface CanvasElementStates {
+  hasAnyChanges: boolean;
   search: string;
   items: CanvasElementItem[];
   selectedItems: string[];
   setSearch: (search: string) => void;
   setSelectedItem: (selectedItems: string[]) => void;
+  loadSavedItems: () => void;
   addItem: (paletteItem: PaletteItemProps) => void;
   dragItem: ({ x, y, id }: { x: number; y: number; id: string }) => void;
   resizeItem: ({
@@ -57,6 +59,7 @@ export interface CanvasElementStates {
   bringToFront: () => void;
   sendToBack: () => void;
   removeItem: () => void;
+  saveChanges: () => void;
 }
 
 export interface CanvasItemProps {

@@ -5,6 +5,7 @@ import {
   DEFAULT_WIDTH,
   DEFAULT_X,
   DEFAULT_Y,
+  LOCAL_STORAGE_DATA_KEY,
 } from "@/utils/constants";
 import type {
   CanvasElementItem,
@@ -26,11 +27,23 @@ function partitionById<T extends { id: string }>(
 }
 
 const useStore = create<CanvasElementStates>((set) => ({
+  hasAnyChanges: false,
   search: "",
   items: [],
   selectedItems: [],
   setSearch: (search: string) => set({ search }),
   setSelectedItem: (selectedItems: string[]) => set({ selectedItems }),
+  loadSavedItems: () => {
+    const savedData = localStorage.getItem(LOCAL_STORAGE_DATA_KEY);
+
+    if (!savedData) {
+      return;
+    }
+
+    const parsedSavedData = JSON.parse(savedData) as CanvasElementItem[];
+    
+    set({ hasAnyChanges: false, items: parsedSavedData });
+  },
   addItem: (paletteItem: PaletteItemProps) => {
     const newItem: CanvasElementItem = {
       id: crypto.randomUUID(),
@@ -41,16 +54,18 @@ const useStore = create<CanvasElementStates>((set) => ({
       height: DEFAULT_HEIGHT,
     };
 
-    set((state) => ({ items: [...state.items, newItem] }));
+    set((state) => ({ hasAnyChanges: true, items: [...state.items, newItem] }));
   },
   dragItem: ({ x, y, id }) =>
     set((state) => ({
+      hasAnyChanges: true,
       items: state.items.map((item) =>
         item.id === id ? { ...item, x, y } : item,
       ),
     })),
   resizeItem: ({ x, y, width, height, id }) =>
     set((state) => ({
+      hasAnyChanges: true,
       items: state.items.map((item) =>
         item.id === id ? { ...item, x, y, width, height } : item,
       ),
@@ -62,7 +77,7 @@ const useStore = create<CanvasElementStates>((set) => ({
         state.selectedItems,
       );
 
-      return { items: [...rest, ...selected] };
+      return { hasAnyChanges: true, items: [...rest, ...selected] };
     }),
   sendToBack: () =>
     set((state) => {
@@ -71,7 +86,7 @@ const useStore = create<CanvasElementStates>((set) => ({
         state.selectedItems,
       );
 
-      return { items: [...selected, ...rest] };
+      return { hasAnyChanges: true, items: [...selected, ...rest] };
     }),
   removeItem: () =>
     set((state) => {
@@ -79,7 +94,14 @@ const useStore = create<CanvasElementStates>((set) => ({
         (item) => !state.selectedItems.includes(item.id),
       );
 
-      return { items: newItem, selectedItems: [] };
+      return { hasAnyChanges: true, items: newItem, selectedItems: [] };
+    }),
+  saveChanges: () =>
+    set((state) => {
+      const stringifyItems = JSON.stringify(state.items);
+      localStorage.setItem(LOCAL_STORAGE_DATA_KEY, stringifyItems);
+
+      return { hasAnyChanges: false };
     }),
 }));
 

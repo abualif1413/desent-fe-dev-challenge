@@ -10,10 +10,31 @@ import CanvasCheckout from "@/components/canvas/canvas-checkout";
 import PaletteSearch from "@/components/palette/palette-search";
 import useStore from "@/hooks/use-store";
 import PaletteEmptyResult from "@/components/palette/palette-empty-result";
+import { useEffect } from "react";
 
 export default function Home() {
   const [canvasContainerRef, canvasBounds] = useMeasure();
   const search = useStore((state) => state.search);
+  const loadSavedItems = useStore((state) => state.loadSavedItems);
+  const hasAnyChanges = useStore((state) => state.hasAnyChanges);
+
+  useEffect(() => {
+    loadSavedItems();
+  }, [])
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (hasAnyChanges) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasAnyChanges])
 
   const paletteItems = search
     ? PALETTE_ITEMS.filter(

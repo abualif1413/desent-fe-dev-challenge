@@ -1,5 +1,6 @@
 import { formatMoney } from "accounting";
 import groupBy from "lodash/groupBy";
+import Image from "next/image";
 
 import useStore from "@/hooks/use-store";
 
@@ -8,7 +9,7 @@ const CanvasCheckout = () => {
   const total = canvasItems.reduce((sum, item) => {
     return sum + item.paletteItem.price;
   }, 0);
-  const groupedItems = groupBy(canvasItems, "paletteItem.category");
+  const groupedItems = groupBy(canvasItems, "paletteItem.brandName");
 
   return (
     <div className="absolute top-5 right-5 z-20 w-72 bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200/90 shadow-lg p-3 transition-all select-none">
@@ -22,6 +23,28 @@ const CanvasCheckout = () => {
           </span>
         </div>
       </div>
+      <div className="flex flex-col gap-1.5 py-2 border-t border-b border-slate-100 mb-2.5 bg-slate-50/70 -mx-3 px-3">
+        {Object.entries(groupedItems).map(([brandName, items]) => (
+          <div
+            key={brandName}
+            className="flex items-start  gap-1.5 text-slate-600"
+          >
+            <Image src={items[0].paletteItem.canvasImageUrl} alt={items[0].paletteItem.brandName} width={30} height={30} className="aspect-square" />
+            <div className="flex flex-col">
+              <span className="font-label-sm text-[10px]">
+                {items.length} {brandName}
+              </span>
+              <span className="font-label-sm text-[10px] font-bold text-slate-800">
+                @{formatMoney(items[0].paletteItem.price, "$")}
+              </span>
+              <span className="font-label-sm text-[10px] font-bold text-slate-800">
+                Subtotal{" "}
+                {formatMoney(items[0].paletteItem.price * items.length, "$")}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="flex items-baseline justify-between mb-2">
         <div className="flex flex-col">
           <span className="font-label-sm text-[10px] uppercase tracking-wider text-slate-400 font-medium">
@@ -31,16 +54,6 @@ const CanvasCheckout = () => {
             {formatMoney(total)}
           </span>
         </div>
-      </div>
-      <div className="grid grid-cols-2 gap-1.5 py-2 border-t border-b border-slate-100 mb-2.5 bg-slate-50/70 -mx-3 px-3">
-        {Object.entries(groupedItems).map(([category, items]) => (
-          <div key={category} className="flex items-center gap-1.5 text-slate-600">
-            <span className="material-symbols-outlined text-[14px] text-primary">
-              {items[0].paletteItem.materialIcon}
-            </span>
-            <span className="font-label-sm text-[10px]">{items.length} {category}</span>
-          </div>
-        ))}
       </div>
       <div className="flex items-center gap-2">
         <button

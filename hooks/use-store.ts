@@ -12,15 +12,28 @@ import type {
   PaletteItemProps,
 } from "@/utils/types";
 
+function partitionById<T extends { id: string }>(
+  items: T[],
+  selectedIds: string[],
+) {
+  const selected: T[] = [];
+  const rest: T[] = [];
+  const selectedSet = new Set(selectedIds);
+  for (const item of items) {
+    (selectedSet.has(item.id) ? selected : rest).push(item);
+  }
+  return { selected, rest };
+}
+
 const useStore = create<CanvasElementStates>((set) => ({
   search: "",
   items: [],
-  selectedIndex: [],
-  setSearch: (search: string) => set((state) => ({...state, search})),
-  setSelectedIndex: (selectedIndex: number[]) =>
-    set((state) => ({ ...state, selectedIndex })),
+  selectedItems: [],
+  setSearch: (search: string) => set({ search }),
+  setSelectedItem: (selectedItems: string[]) => set({ selectedItems }),
   addItem: (paletteItem: PaletteItemProps) => {
     const newItem: CanvasElementItem = {
+      id: crypto.randomUUID(),
       paletteItem,
       x: DEFAULT_X,
       y: DEFAULT_Y,
@@ -28,68 +41,45 @@ const useStore = create<CanvasElementStates>((set) => ({
       height: DEFAULT_HEIGHT,
     };
 
-    set((state) => ({ ...state, items: [...state.items, newItem] }));
+    set((state) => ({ items: [...state.items, newItem] }));
   },
-  dragItem: ({ x, y, index }) =>
-    set((state) => {
-      const updatedItems = [...state.items];
-      updatedItems[index].x = x;
-      updatedItems[index].y = y;
-
-      return { ...state, items: updatedItems };
-    }),
-  resizeItem: ({ x, y, width, height, index }) =>
-    set((state) => {
-      const updatedItems = [...state.items];
-      updatedItems[index].x = x;
-      updatedItems[index].y = y;
-      updatedItems[index].width = width;
-      updatedItems[index].height = height;
-
-      return { ...state, items: updatedItems };
-    }),
+  dragItem: ({ x, y, id }) =>
+    set((state) => ({
+      items: state.items.map((item) =>
+        item.id === id ? { ...item, x, y } : item,
+      ),
+    })),
+  resizeItem: ({ x, y, width, height, id }) =>
+    set((state) => ({
+      items: state.items.map((item) =>
+        item.id === id ? { ...item, x, y, width, height } : item,
+      ),
+    })),
   bringToFront: () =>
     set((state) => {
-      const currentItems = state.items;
-      const unselectedItems: CanvasElementItem[] = [];
-      const selectedItems: CanvasElementItem[] = [];
+      const { selected, rest } = partitionById(
+        state.items,
+        state.selectedItems,
+      );
 
-      currentItems.forEach((item, index) => {
-        if (state.selectedIndex.includes(index)) {
-          selectedItems.push(item);
-        } else {
-          unselectedItems.push(item);
-        }
-      });
-      state.setSelectedIndex([]);
-
-      return { ...state, items: [...unselectedItems, ...selectedItems] };
+      return { items: [...rest, ...selected] };
     }),
   sendToBack: () =>
     set((state) => {
-      const currentItems = state.items;
-      const unselectedItems: CanvasElementItem[] = [];
-      const selectedItems: CanvasElementItem[] = [];
+      const { selected, rest } = partitionById(
+        state.items,
+        state.selectedItems,
+      );
 
-      currentItems.forEach((item, index) => {
-        if (state.selectedIndex.includes(index)) {
-          selectedItems.push(item);
-        } else {
-          unselectedItems.push(item);
-        }
-      });
-      state.setSelectedIndex([]);
-
-      return { ...state, items: [...selectedItems, ...unselectedItems] };
+      return { items: [...selected, ...rest] };
     }),
   removeItem: () =>
     set((state) => {
       const newItem = state.items.filter(
-        (_item, index) => !state.selectedIndex.includes(index),
+        (item) => !state.selectedItems.includes(item.id),
       );
-      state.setSelectedIndex([]);
 
-      return { ...state, items: newItem };
+      return { items: newItem, selectedItems: [] };
     }),
 }));
 

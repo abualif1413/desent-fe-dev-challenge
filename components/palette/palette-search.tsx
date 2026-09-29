@@ -7,7 +7,7 @@ const PaletteSearch = () => {
 
   const debouncedSearchRef = useRef(
     debounce((value) => {
-      setSearch(value)
+      setSearch(value);
     }, 500),
   );
 

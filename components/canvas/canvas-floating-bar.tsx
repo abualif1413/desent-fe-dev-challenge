@@ -6,6 +6,11 @@ const CanvasFloatingBar: FC = () => {
   const sendToBack = useStore((state) => state.sendToBack);
   const bringToFront = useStore((state) => state.bringToFront);
   const removeItem = useStore((state) => state.removeItem);
+  const selectedItems = useStore((state) => state.selectedItems);
+
+  if (selectedItems.length === 0) {
+    return null;
+  }
 
   return (
     <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-xl px-2 py-1.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1">

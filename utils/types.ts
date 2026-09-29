@@ -25,6 +25,7 @@ export interface CanvasMainProps {
 }
 
 export interface CanvasElementItem {
+  id: string;
   paletteItem: PaletteItemProps;
   x: number;
   y: number;
@@ -35,23 +36,23 @@ export interface CanvasElementItem {
 export interface CanvasElementStates {
   search: string;
   items: CanvasElementItem[];
-  selectedIndex: number[];
+  selectedItems: string[];
   setSearch: (search: string) => void;
-  setSelectedIndex: (selectedIndex: number[]) => void;
+  setSelectedItem: (selectedItems: string[]) => void;
   addItem: (paletteItem: PaletteItemProps) => void;
-  dragItem: ({ x, y, index }: { x: number; y: number; index: number }) => void;
+  dragItem: ({ x, y, id }: { x: number; y: number; id: string }) => void;
   resizeItem: ({
     x,
     y,
     width,
     height,
-    index,
+    id,
   }: {
     x: number;
     y: number;
     width: number;
     height: number;
-    index: number;
+    id: string;
   }) => void;
   bringToFront: () => void;
   sendToBack: () => void;

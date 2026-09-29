@@ -1,9 +1,10 @@
 import { FC, useEffect, useRef } from "react";
 import Konva from "konva";
-import { Image, Transformer } from "react-konva";
+import { Image, Rect, Transformer } from "react-konva";
 import useImage from "use-image";
 
 import type { CanvasItemProps } from "@/utils/types";
+import useStore from "@/hooks/use-store";
 
 const CanvasItem: FC<CanvasItemProps> = ({
   imageElement,
@@ -15,6 +16,8 @@ const CanvasItem: FC<CanvasItemProps> = ({
   const [imageUrl, status] = useImage(imageElement.paletteItem.canvasImageUrl);
   const shapeRef = useRef<Konva.Image>(null);
   const trRef = useRef<Konva.Transformer>(null);
+  const selectedItems = useStore((state) => state.selectedItems);
+  const setSelectedItem = useStore((state) => state.setSelectedItem);
 
   useEffect(() => {
     if (isSelected && trRef.current && shapeRef.current) {
@@ -23,8 +26,8 @@ const CanvasItem: FC<CanvasItemProps> = ({
     }
   }, [isSelected]);
 
-  if (status !== "loaded") {
-    return null;
+  if (status === "failed") {
+    return <Rect x={imageElement.x} y={imageElement.y} width={imageElement.width} height={imageElement.height} stroke="red" />;
   }
 
   return (
@@ -36,8 +39,16 @@ const CanvasItem: FC<CanvasItemProps> = ({
         image={imageUrl}
         width={imageElement.width}
         height={imageElement.height}
-        draggable={isSelected}
         onClick={onSelect}
+        draggable
+        onDragStart={() => {
+          if (!isSelected) {
+            const selectedSet = new Set(selectedItems);
+            selectedSet.add(imageElement.id);
+
+            setSelectedItem([...selectedSet]);
+          }
+        }}
         onDragEnd={(e) => {
           onDragElement({ x: e.target.x(), y: e.target.y() });
         }}

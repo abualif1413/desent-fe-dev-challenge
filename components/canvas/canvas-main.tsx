@@ -10,52 +10,42 @@ const CanvasMain: FC<CanvasMainProps> = ({ width, height }) => {
   const canvasElements = useStore((state) => state.items);
   const dragElement = useStore((state) => state.dragItem);
   const resizeElement = useStore((state) => state.resizeItem);
-  const selectedIndex = useStore((state) => state.selectedIndex);
-  const setSelectedIndex = useStore((state) => state.setSelectedIndex);
+  const selectedItems = useStore((state) => state.selectedItems);
+  const setSelectedItem = useStore((state) => state.setSelectedItem);
 
-  const renderedCanvas = useMemo(() => {
-    return (
-      <>
-        {canvasElements.map((element, index) => {
+  return (
+    <Stage
+      width={width}
+      height={height}
+      onMouseDown={(e) => {
+        if (e.target === e.target.getStage()) setSelectedItem([]);
+      }}
+      onTouchStart={(e) => {
+        if (e.target === e.target.getStage()) setSelectedItem([]);
+      }}
+    >
+      <Layer>
+        {canvasElements.map((element) => {
           return (
             <CanvasItem
-              key={`${element.paletteItem.brandName}_${index}`}
+              key={element.id}
               imageElement={element}
-              isSelected={selectedIndex.includes(index)}
+              isSelected={selectedItems.includes(element.id)}
               onDragElement={({ x, y }) => {
-                dragElement({ x, y, index });
+                dragElement({ x, y, id: element.id });
               }}
               onResizeElement={({ x, y, width, height }) => {
-                resizeElement({ x, y, width, height, index });
+                resizeElement({ x, y, width, height, id: element.id });
               }}
               onSelect={() => {
-                const newSelected = [...selectedIndex];
-                if (!newSelected.includes(index)) {
-                  newSelected.push(index);
-                }
-                setSelectedIndex(newSelected);
+                const selectedSet = new Set(selectedItems);
+                selectedSet.add(element.id);
+
+                setSelectedItem([...selectedSet]);
               }}
             />
           );
         })}
-      </>
-    );
-  }, [canvasElements, selectedIndex, dragElement, resizeElement]);
-
-  return (
-    <Stage
-      draggable
-      width={width}
-      height={height}
-      onMouseDown={(e) => {
-        if (e.target === e.target.getStage()) setSelectedIndex([]);
-      }}
-      onTouchStart={(e) => {
-        if (e.target === e.target.getStage()) setSelectedIndex([]);
-      }}
-    >
-      <Layer>
-        {renderedCanvas}
       </Layer>
     </Stage>
   );

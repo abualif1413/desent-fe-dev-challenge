@@ -16,10 +16,7 @@ const PaletteItem: FC<PaletteItemProps> = ({
   const addElements = useStore((state) => state.addItem);
   return (
     <div
-      className="catalog-item group p-2.5 rounded-lg bg-white border border-slate-200/90 hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer flex items-center justify-between gap-2"
-      data-cat={category}
-      data-h="160"
-      data-label={brandName}
+      className="catalog-item group p-2.5 rounded-lg bg-white border border-slate-200/90 hover:border-primary/50 hover:shadow-sm transition-all flex items-center justify-between gap-2"
     >
       <div className="flex items-start gap-2.5 min-w-0">
         <Image
@@ -42,7 +39,7 @@ const PaletteItem: FC<PaletteItemProps> = ({
         </div>
       </div>
       <button
-        className="w-6 h-6 rounded bg-slate-50 text-slate-400 hover:bg-primary hover:text-white flex items-center justify-center transition-all border border-slate-200 flex-shrink-0"
+        className="w-6 h-6 rounded bg-slate-50 text-slate-400 hover:bg-primary hover:text-white flex items-center justify-center transition-all border border-slate-200 flex-shrink-0 cursor-pointer"
         title="Add to Canvas"
         type="button"
         onClick={() =>
@@ -55,6 +52,7 @@ const PaletteItem: FC<PaletteItemProps> = ({
             price,
           })
         }
+        aria-label={`Add ${brandName} to canvas`}
       >
         <span className="material-symbols-outlined text-[15px]">add</span>
       </button>

@@ -9,16 +9,20 @@ import { PALETTE_ITEMS } from "@/utils/constants";
 import CanvasCheckout from "@/components/canvas/canvas-checkout";
 import PaletteSearch from "@/components/palette/palette-search";
 import useStore from "@/hooks/use-store";
+import PaletteEmptyResult from "@/components/palette/palette-empty-result";
 
 export default function Home() {
   const [canvasContainerRef, canvasBounds] = useMeasure();
   const search = useStore((state) => state.search);
 
-  const paletteItems = search ? PALETTE_ITEMS.filter(
-    (item) => item.brandName.toLowerCase().includes(search.toLowerCase())
-      || item.category.toLowerCase().includes(search.toLowerCase())
-      || item.description.toLowerCase().includes(search.toLowerCase())
-  ) : PALETTE_ITEMS
+  const paletteItems = search
+    ? PALETTE_ITEMS.filter(
+        (item) =>
+          item.brandName.toLowerCase().includes(search.toLowerCase()) ||
+          item.category.toLowerCase().includes(search.toLowerCase()) ||
+          item.description.toLowerCase().includes(search.toLowerCase()),
+      )
+    : PALETTE_ITEMS;
 
   return (
     <main className="relative w-full bg-[#f8fafc] min-h-screen">
@@ -26,10 +30,20 @@ export default function Home() {
         <div className="flex flex-1 w-full h-full relative overflow-hidden">
           <aside className="w-72 xl:w-80 bg-white border-r border-slate-200/80 flex flex-col z-20 flex-shrink-0 shadow-sm relative">
             <PaletteSearch />
-            <PaletteMain paletteItems={paletteItems} />
+            {paletteItems.length ? (
+              <PaletteMain paletteItems={paletteItems} />
+            ) : (
+              <PaletteEmptyResult />
+            )}
           </aside>
-          <div className="flex-1 relative overflow-hidden bg-[#f1f5f9]" ref={canvasContainerRef}>
-            <CanvasMain width={canvasBounds.width} height={canvasBounds.height} />
+          <div
+            className="flex-1 relative overflow-hidden bg-[#f1f5f9]"
+            ref={canvasContainerRef}
+          >
+            <CanvasMain
+              width={canvasBounds.width}
+              height={canvasBounds.height}
+            />
             <CanvasFloatingBar />
             <CanvasCheckout />
           </div>

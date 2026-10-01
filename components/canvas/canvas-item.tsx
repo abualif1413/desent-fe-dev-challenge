@@ -40,13 +40,11 @@ const CanvasItem: FC<CanvasItemProps> = ({
         width={imageElement.width}
         height={imageElement.height}
         onClick={onSelect}
+        onTap={onSelect}
         draggable
         onDragStart={() => {
           if (!isSelected) {
-            const selectedSet = new Set(selectedItems);
-            selectedSet.add(imageElement.id);
-
-            setSelectedItem([...selectedSet]);
+            onSelect();
           }
         }}
         onDragEnd={(e) => {

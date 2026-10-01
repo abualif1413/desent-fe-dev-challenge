@@ -15,6 +15,7 @@ const CanvasMain: FC<CanvasMainProps> = ({ width, height }) => {
 
   return (
     <Stage
+      draggable
       width={width}
       height={height}
       onMouseDown={(e) => {

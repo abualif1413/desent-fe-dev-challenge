@@ -34,10 +34,12 @@ export interface CanvasElementItem {
 }
 
 export interface CanvasElementStates {
+  isSideBarOpen: boolean;
   hasAnyChanges: boolean;
   search: string;
   items: CanvasElementItem[];
   selectedItems: string[];
+  setSideBarOpen: (open: boolean) => void;
   setSearch: (search: string) => void;
   setSelectedItem: (selectedItems: string[]) => void;
   loadSavedItems: () => void;

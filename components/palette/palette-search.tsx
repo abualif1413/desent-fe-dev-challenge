@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 const PaletteSearch = () => {
   const setSearch = useStore((state) => state.setSearch);
+  const setSideBarOpen = useStore((state) => state.setSideBarOpen);
 
   const debouncedSearchRef = useRef(
     debounce((value) => {
@@ -20,7 +21,7 @@ const PaletteSearch = () => {
   }, []);
 
   return (
-    <div className="p-space-sm bg-white border-b border-slate-200/80 flex flex-col gap-space-sm">
+    <div className="p-space-sm overflow-hidden bg-white border-b border-slate-200/80 flex flex-col gap-space-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-[20px]">
@@ -30,6 +31,14 @@ const PaletteSearch = () => {
             Customize your workspace
           </span>
         </div>
+        <button
+          type="button"
+          id="closeSidebarBtn"
+          className="md:hidden w-7 h-7 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition-all border border-slate-200/80"
+          onClick={() => void setSideBarOpen(false)}
+        >
+          <span className="material-symbols-outlined text-[18px]">close</span>
+        </button>
       </div>
       <div className="relative w-full">
         <span className="material-symbols-outlined absolute left-2.5 top-1 text-[18px] text-slate-400">

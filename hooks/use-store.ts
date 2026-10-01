@@ -27,10 +27,12 @@ function partitionById<T extends { id: string }>(
 }
 
 const useStore = create<CanvasElementStates>((set) => ({
+  isSideBarOpen: false,
   hasAnyChanges: false,
   search: "",
   items: [],
   selectedItems: [],
+  setSideBarOpen: (open: boolean) => set({isSideBarOpen: open}),
   setSearch: (search: string) => set({ search }),
   setSelectedItem: (selectedItems: string[]) => set({ selectedItems }),
   loadSavedItems: () => {
@@ -54,7 +56,7 @@ const useStore = create<CanvasElementStates>((set) => ({
       height: DEFAULT_HEIGHT,
     };
 
-    set((state) => ({ hasAnyChanges: true, items: [...state.items, newItem] }));
+    set((state) => ({ hasAnyChanges: true, isSideBarOpen: false, items: [...state.items, newItem] }));
   },
   dragItem: ({ x, y, id }) =>
     set((state) => ({

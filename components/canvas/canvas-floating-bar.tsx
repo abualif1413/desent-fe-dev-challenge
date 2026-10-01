@@ -31,7 +31,7 @@ const Pills: FC<PillsProps> = ({
       <span className="material-symbols-outlined text-[15px]">
         {materialIcon}
       </span>
-      <span className="">{caption}</span>
+      <span className="hidden md:inline">{caption}</span>
     </button>
   );
 };

@@ -38,13 +38,13 @@ const CanvasCheckout = () => {
                 className="aspect-square"
               />
               <div className="flex flex-col">
-                <span className="font-label-sm text-[10px]">
+                <span className="font-headline-sm text-[12px]">
                   {items.length} {brandName}
                 </span>
-                <span className="font-label-sm text-[10px] font-bold text-slate-800">
+                <span className="font-label-sm text-[12px] font-bold text-slate-800">
                   @{formatMoney(items[0].paletteItem.price, "$")}
                 </span>
-                <span className="font-label-sm text-[10px] font-bold text-slate-800">
+                <span className="font-label-sm text-[12px] font-bold text-slate-800">
                   Subtotal{" "}
                   {formatMoney(items[0].paletteItem.price * items.length, "$")}
                 </span>

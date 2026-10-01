@@ -6,11 +6,9 @@ const PaletteEmptyResult = () => {
   return (
     <div
       className="flex-1 overflow-y-auto p-space-sm space-y-space-sm"
-      id="catalogList"
     >
       <div
         className="flex flex-col items-center justify-center text-center p-6 my-4 rounded-xl border border-dashed border-slate-200 bg-slate-50/70 transition-all"
-        id="catalogEmptyState"
       >
         <div className="w-12 h-12 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-primary mb-3 shadow-xs">
           <span className="material-symbols-outlined text-[24px]">

@@ -49,8 +49,8 @@ export default function Home() {
     : PALETTE_ITEMS;
 
   return (
-    <main className="relative w-full bg-[#f8fafc] min-h-screen">
-      <div className="flex flex-col w-full h-screen overflow-hidden select-none">
+    <main className="relative w-full bg-[#f8fafc] h-dvh">
+      <div className="flex flex-col w-full h-full overflow-hidden select-none">
         <div className="flex flex-1 w-full h-full relative overflow-hidden">
           <aside
             className={classNames(
@@ -73,7 +73,6 @@ export default function Home() {
             ref={canvasContainerRef}
           >
             <button
-              id="openSidebarBtn"
               type="button"
               className="md:hidden absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md text-slate-800 hover:text-primary rounded-xl px-3 py-2 flex items-center gap-1.5 font-label-sm text-label-sm font-semibold transition-all active:scale-95"
               onClick={() => void setSideBarOpen(true)}

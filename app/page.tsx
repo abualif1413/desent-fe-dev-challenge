@@ -12,6 +12,7 @@ import PaletteSearch from "@/components/palette/palette-search";
 import useStore from "@/hooks/use-store";
 import PaletteEmptyResult from "@/components/palette/palette-empty-result";
 import classNames from "classnames";
+import Backdrop from "@/components/utils/backdrop";
 
 export default function Home() {
   const [canvasContainerRef, canvasBounds] = useMeasure();
@@ -50,11 +51,12 @@ export default function Home() {
 
   return (
     <main className="relative w-full bg-[#f8fafc] h-dvh">
+      <Backdrop />
       <div className="flex flex-col w-full h-full overflow-hidden select-none">
         <div className="flex flex-1 w-full h-full relative overflow-hidden">
           <aside
             className={classNames(
-              "w-72 xl:w-80 h-full bg-white border-r border-slate-200/80 flex flex-col z-20 flex-shrink-0 shadow-sm absolute md:relative transition-[translate] duration-300 ease-in-out z-100",
+              "w-72 xl:w-80 h-full bg-white border-r border-slate-200/80 flex flex-col z-translated-element flex-shrink-0 shadow-sm absolute md:relative transition-[translate] duration-300 ease-in-out",
               {
                 "translate-x-0": isSideBarOpen,
                 "translate-x-[-300px] md:translate-x-0": !isSideBarOpen,
@@ -74,7 +76,7 @@ export default function Home() {
           >
             <button
               type="button"
-              className="md:hidden absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md text-slate-800 hover:text-primary rounded-xl px-3 py-2 flex items-center gap-1.5 font-label-sm text-label-sm font-semibold transition-all active:scale-95"
+              className="md:hidden absolute top-4 left-4 z-floating-element bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md text-slate-800 hover:text-primary rounded-xl px-3 py-2 flex items-center gap-1.5 font-label-sm text-label-sm font-semibold transition-all active:scale-95"
               onClick={() => void setSideBarOpen(true)}
             >
               <span className="material-symbols-outlined text-primary text-[18px]">

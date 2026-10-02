@@ -3,9 +3,12 @@ import groupBy from "lodash/groupBy";
 import Image from "next/image";
 
 import useStore from "@/hooks/use-store";
+import classNames from "classnames";
 
 const CanvasCheckout = () => {
   const canvasItems = useStore((state) => state.items);
+  const isCheckoutOpen = useStore((state) => state.isCheckoutOpen);
+  const setCheckoutOpen = useStore((state) => state.setCheckoutOpen);
   const total = canvasItems.reduce((sum, item) => {
     return sum + item.paletteItem.price;
   }, 0);
@@ -13,7 +16,18 @@ const CanvasCheckout = () => {
 
   return (
     <>
-      <div className="hidden md:inline absolute top-5 right-5 z-20 w-72 bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200/90 shadow-lg p-3 transition-all select-none">
+      <div
+        className={classNames(
+          "absolute bg-white/95 backdrop-blur-xl rounded-t-2xl md:rounded-xl border border-slate-200/90 shadow-lg p-3 transition-all select-none",
+          "bottom-0 md:bottom-auto md:top-5 md:right-5",
+          "w-full md:w-72",
+          "z-translated-element md:z-floating-element",
+          {
+            "translate-y-0": isCheckoutOpen,
+            "translate-y-[500px] md:translate-y-0": !isCheckoutOpen,
+          },
+        )}
+      >
         <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2.5">
           <div className="flex items-center gap-1.5">
             <span className="material-symbols-outlined text-primary text-[18px]">
@@ -24,7 +38,12 @@ const CanvasCheckout = () => {
             </span>
           </div>
         </div>
-        <div className="flex flex-col gap-1.5 py-2 border-t border-b border-slate-100 mb-2.5 bg-slate-50/70 -mx-3 px-3">
+        <div
+          className={classNames(
+            "flex flex-col gap-1.5 py-2 border-t border-b border-slate-100 mb-2.5 bg-slate-50/70 -mx-3 px-3",
+            "max-h-[200px] md:max-h-none overflow-y-auto",
+          )}
+        >
           {Object.entries(groupedItems).map(([brandName, items]) => (
             <div
               key={brandName}
@@ -74,10 +93,13 @@ const CanvasCheckout = () => {
           </button>
         </div>
       </div>
-      <div className="md:hidden absolute top-4 right-4 z-20">
+      <div className="md:hidden absolute top-4 right-4 z-floating-element">
         <button
           type="button"
           className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md text-slate-800 hover:text-primary rounded-xl px-3 py-2 flex items-center gap-2 font-label-sm text-label-sm font-semibold transition-all active:scale-95"
+          onClick={() => {
+            setCheckoutOpen(true);
+          }}
         >
           <span className="material-symbols-outlined text-primary text-[18px]">
             receipt_long

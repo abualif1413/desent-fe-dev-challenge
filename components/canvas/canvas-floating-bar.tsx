@@ -45,7 +45,7 @@ const CanvasFloatingBar: FC = () => {
   const saveChanges = useStore((state) => state.saveChanges);
 
   return (
-    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-xl px-2 py-1.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1">
+    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-floating-element bg-white/95 backdrop-blur-xl px-2 py-1.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1">
       <Pills
         caption="Bring to Front"
         materialIcon="flip_to_front"

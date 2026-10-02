@@ -28,11 +28,13 @@ function partitionById<T extends { id: string }>(
 
 const useStore = create<CanvasElementStates>((set) => ({
   isSideBarOpen: false,
+  isCheckoutOpen: false,
   hasAnyChanges: false,
   search: "",
   items: [],
   selectedItems: [],
   setSideBarOpen: (open: boolean) => set({isSideBarOpen: open}),
+  setCheckoutOpen: (open: boolean) => set({isCheckoutOpen: open}),
   setSearch: (search: string) => set({ search }),
   setSelectedItem: (selectedItems: string[]) => set({ selectedItems }),
   loadSavedItems: () => {

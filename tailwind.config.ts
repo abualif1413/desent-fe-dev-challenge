@@ -9,6 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      zIndex: {
+        "floating-element": 5,
+        "backdrop": 10,
+        "translated-element": 15,
+      },
       colors: {
         "on-tertiary-fixed-variant": "#004c6e",
         "surface-tint": "#006398",

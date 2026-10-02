@@ -22,6 +22,7 @@ const CanvasCheckout = () => {
           "bottom-0 md:bottom-auto md:top-5 md:right-5",
           "w-full md:w-72",
           "z-translated-element md:z-floating-element",
+          "transition-[translate] duration-300 ease-in-out",
           {
             "translate-y-0": isCheckoutOpen,
             "translate-y-[500px] md:translate-y-0": !isCheckoutOpen,
